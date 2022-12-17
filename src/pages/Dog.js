@@ -11,9 +11,9 @@ export function Dog({ dog, toggleDog }) {
           onChange={handleDogClick}
         />
         <div>
-          {dog.name}
+          Dog's Name: {dog.name}
           <br></br>
-          {dog.info}
+          Play Style: {dog.info}
         </div>
       </label>
     </div>

@@ -16,3 +16,16 @@ code {
   padding-left: 30px;
   padding-right: 30px;
 }
+
+body {
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-attachment: fixed;
+  height: auto;
+  width: auto;
+  margin: 200px;
+  background-image: url("https://img.freepik.com/free-vector/cute-dog-border-frame-vector-beige-background_53876-111781.jpg?w=2000");
+}
+input {
+  width: 25%;
+}

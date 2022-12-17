@@ -4,7 +4,11 @@ import { Dog } from "./pages/Dog";
 import { Link, Route, Routes } from "react-router-dom";
 import React, { useState, useRef, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { Card } from "react-bootstrap";
+import { Explore } from "./pages/Explore";
 import { Bootstrap } from "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Form } from "react-bootstrap";
+import Contact from "./pages/Contact";
 
 const LOCAL_STORAGE_KEY = "dogApp.dogs";
 
@@ -52,100 +56,85 @@ function App() {
   return (
     <div className="container">
       <>
-        {/* <nav>
-        <ul>
-          <li>
-            <Link to="/">About</Link>
-          </li>
-          <li>
-            <Link to="/breeds">Dog Breeds</Link>
-          </li>
-          <li>
-            <Link to="/profile">Dog Profile</Link>
-          </li>
-        </ul>
-      </nav> */}
         <nav className="navbar navbar-expand-lg bg-light">
           <div className="container-fluid">
             <a className="navbar-brand">Furfriend Finder</a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <Link className="link-secondary" to="/">
-                    About
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="link-secondary" to="/breeds">
-                    Dog Breeds{" "}
-                  </Link>
-                </li>
 
-                <li className="nav-item">
-                  <Link className="link-secondary" to="/profile">
-                    Dog Profile
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link className="link-secondary" to="/">
+                  About
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="link-secondary" to="/breeds">
+                  Dog Breeds{" "}
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="link-secondary" to="/contact">
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
           </div>
         </nav>
+        <br />
         <Routes>
           <Route path="/" element={<About />} />
-          <Route path="/breeds" element={<DogList />} />
-          <Route path="/profile" element={<Dog />} />
+          <Route path="/breeds" element={<Explore />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
 
         <>
+          <br></br>
           <div className="mb-3">
-            <label className="form-label">Name:</label>
+            <label className="form-label">Dog's Name:</label>
             <input ref={dogNameRef} className="form-control" type="text" />
           </div>
           <div>
             <label className="form-label">
               How does your dog like to play?
             </label>
-            <input
-              ref={dogInfoRef}
-              className="form-control"
-              type="text"
-              rows="5"
-              cols="5"
-            />
+            <input ref={dogInfoRef} className="form-control" type="text" />
           </div>
           <br></br>
           <button className="btn btn-success" onClick={handleAddDog}>
             Add Dog
           </button>
           <button className="btn btn-warning" onClick={handleClearDogs}>
-            Remove Checked Dogs
+            Clear Checked Dogs
           </button>
+
           <br></br>
           <br></br>
-          <div>
-            {dogs.filter((dog) => !dog.complete).length} dogs still need to find
-            playmates!
-          </div>
+          <Card>
+            <Card.Header>Note:</Card.Header>
+            <Card.Body>
+              If you see a dog that you think will play well with yours, "check"
+              their box and clear them from the list by clicking the "Clear
+              Checked Dogs" button.
+            </Card.Body>
+          </Card>
           <br></br>
-          <form>
-            <DogList dogs={dogs} toggleDog={toggleDog} />
-          </form>
+          <Card>
+            <Card.Body>
+              <Card border="warning">
+                <Card.Body>
+                  {dogs.filter((dog) => !dog.complete).length} dogs still need
+                  to find playmates!
+                </Card.Body>
+              </Card>
+              <br></br>
+              <h6>Looking for playmates:</h6>
+              <DogList dogs={dogs} toggleDog={toggleDog} />
+            </Card.Body>
+          </Card>
         </>
       </>
+      <br />
+      <br />
     </div>
   );
 }
