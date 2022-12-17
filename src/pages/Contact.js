@@ -17,7 +17,7 @@ function Contact() {
       <br />
       <h1>
         <b>
-          <center>Thank you spending part of your day with us!</center>
+          <center>Thank you for spending part of your day with us!</center>
         </b>
       </h1>
     </Card>
